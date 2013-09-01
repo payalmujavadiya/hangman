@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -12,7 +13,7 @@ int letterFill (char, string, string&);
 int main ()
 {
 string name;
-char letter;
+char letter,ch;
 int num_of_wrong_guesses=0;
 string word;
 string words[] ={
@@ -27,12 +28,12 @@ string words[] ={
 "oman",
 "indonesia"
 };
-
+do{
 //choose and copy a word from array of words randomly
 srand(time(NULL));
 int n=rand()% 10;
 word=words[n];
-
+num_of_wrong_guesses=0;
 // Initialize the secret word with the * character.
 string unknown(word.length(),'*');
 
@@ -101,8 +102,15 @@ if(num_of_wrong_guesses == MAX_TRIES)
 cout << "\nSorry, you lose...you've been hanged." << endl;
 cout << "The word was : " << word << endl;
 }
+cout<<"do you want to play again ";
+cin>>ch;
+}
+while(ch=='y'||ch=='Y');
+if(ch!='y'||ch!='Y')
+return 0;
 cin.ignore();
 cin.get();
+
 return 0;
 }
 
